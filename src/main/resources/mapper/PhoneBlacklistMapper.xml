@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengda.hdb.risk.dao.PhoneBlacklistMapper" >
+  <resultMap id="BaseResultMap" type="com.hengda.hdb.risk.base.po.PhoneBlacklist" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="phone_num" property="phoneNum" jdbcType="VARCHAR" />
+    <result column="ban_reason_code" property="banReasonCode" jdbcType="VARCHAR" />
+    <result column="ban_start_time" property="banStartTime" jdbcType="TIMESTAMP" />
+    <result column="ban_end_time" property="banEndTime" jdbcType="TIMESTAMP" />
+    <result column="ban_type" property="banType" jdbcType="TINYINT" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, phone_num, ban_reason_code, ban_start_time, ban_end_time, ban_type, creator, 
+    create_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from phone_blacklist
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from phone_blacklist
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hengda.hdb.risk.base.po.PhoneBlacklist" >
+    insert into phone_blacklist (id, phone_num, ban_reason_code, 
+      ban_start_time, ban_end_time, ban_type, 
+      creator, create_time, remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{phoneNum,jdbcType=VARCHAR}, #{banReasonCode,jdbcType=VARCHAR}, 
+      #{banStartTime,jdbcType=TIMESTAMP}, #{banEndTime,jdbcType=TIMESTAMP}, #{banType,jdbcType=TINYINT}, 
+      #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengda.hdb.risk.base.po.PhoneBlacklist" >
+    insert into phone_blacklist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="phoneNum != null" >
+        phone_num,
+      </if>
+      <if test="banReasonCode != null" >
+        ban_reason_code,
+      </if>
+      <if test="banStartTime != null" >
+        ban_start_time,
+      </if>
+      <if test="banEndTime != null" >
+        ban_end_time,
+      </if>
+      <if test="banType != null" >
+        ban_type,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="phoneNum != null" >
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="banReasonCode != null" >
+        #{banReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="banStartTime != null" >
+        #{banStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="banEndTime != null" >
+        #{banEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="banType != null" >
+        #{banType,jdbcType=TINYINT},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengda.hdb.risk.base.po.PhoneBlacklist" >
+    update phone_blacklist
+    <set >
+      <if test="phoneNum != null" >
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="banReasonCode != null" >
+        ban_reason_code = #{banReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="banStartTime != null" >
+        ban_start_time = #{banStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="banEndTime != null" >
+        ban_end_time = #{banEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="banType != null" >
+        ban_type = #{banType,jdbcType=TINYINT},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengda.hdb.risk.base.po.PhoneBlacklist" >
+    update phone_blacklist
+    set phone_num = #{phoneNum,jdbcType=VARCHAR},
+      ban_reason_code = #{banReasonCode,jdbcType=VARCHAR},
+      ban_start_time = #{banStartTime,jdbcType=TIMESTAMP},
+      ban_end_time = #{banEndTime,jdbcType=TIMESTAMP},
+      ban_type = #{banType,jdbcType=TINYINT},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
